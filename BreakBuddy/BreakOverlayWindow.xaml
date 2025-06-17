@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="BreakBuddy.BreakOverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid x:Name="RootGrid">
+        <!-- Blurred Background -->
+        <Image x:Name="BlurredBackground" 
+               Stretch="UniformToFill"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"/>
+
+        <!-- Dark Overlay -->
+        <Rectangle Fill="Black" Opacity="0.3"/>
+
+        <!-- Break Content -->
+        <Grid>
+            <StackPanel VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Spacing="24"
+                       Margin="40">
+
+                <!-- Main Break Message -->
+                <StackPanel Spacing="16" HorizontalAlignment="Center">
+                    <TextBlock Text="👁️ Time for an Eye Break!" 
+                              FontSize="48" 
+                              FontWeight="Bold"
+                              HorizontalAlignment="Center"
+                              Foreground="White"
+                              TextAlignment="Center"/>
+
+                    <TextBlock x:Name="BreakMessage" 
+                              Text="Look away from your screen and rest your eyes"
+                              FontSize="20"
+                              HorizontalAlignment="Center"
+                              Foreground="LightGray"
+                              TextAlignment="Center"
+                              TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <!-- Countdown Circle -->
+                <Grid Width="200" Height="200" HorizontalAlignment="Center">
+                    <Ellipse Stroke="White" 
+                            StrokeThickness="4" 
+                            Opacity="0.3"
+                            Width="200" 
+                            Height="200"/>
+
+                    <TextBlock x:Name="CountdownText" 
+                              Text="20" 
+                              FontSize="64" 
+                              FontWeight="Bold"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Foreground="White"/>
+                </Grid>
+
+                <!-- Progress Bar -->
+                <ProgressBar x:Name="BreakProgressBar" 
+                            Width="400"
+                            Height="8"
+                            Foreground="{ThemeResource AccentFillColorDefaultBrush}"
+                            Background="White"
+                            Opacity="0.8"/>
+
+                <!-- Eye Care Tips -->
+                <Border Background="Black" 
+                       Opacity="0.6" 
+                       CornerRadius="12" 
+                       Padding="24"
+                       MaxWidth="500">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="💡 Eye Care Tips" 
+                                  FontSize="18" 
+                                  FontWeight="SemiBold"
+                                  Foreground="White"
+                                  HorizontalAlignment="Center"/>
+
+                        <TextBlock x:Name="EyeCareTip" 
+                                  Text="Look at something 20 feet away for 20 seconds"
+                                  FontSize="14"
+                                  Foreground="LightGray"
+                                  HorizontalAlignment="Center"
+                                  TextAlignment="Center"
+                                  TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Skip Button (appears in last 5 seconds) -->
+                <Button x:Name="SkipButton" 
+                       Content="Press ESC to Skip (5s remaining)" 
+                       Click="SkipButton_Click"
+                       HorizontalAlignment="Center"
+                       FontSize="14"
+                       Padding="20,8"
+                       Visibility="Collapsed"
+                       Opacity="0.8"/>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

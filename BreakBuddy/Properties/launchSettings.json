@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BreakBuddy (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "BreakBuddy (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
