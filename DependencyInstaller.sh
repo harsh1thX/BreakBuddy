@@ -1,7 +1,22 @@
 #!/bin/bash
 set -e  # Exit on any error
 
-echo "=== Dependency Installer Script ==="
+echo "
+  _____                       _          _____                            _                 _           
+ |  __ \                     (_)        |  __ \                          | |               (_)          
+ | |__) |__ _ __   __ _ _   _ _ _ __    | |  | | ___ _ __   ___ _ __   __| | ___ _ __   ___ _  ___  ___ 
+ |  ___/ _ \ '_ \ / _` | | | | | '_ \   | |  | |/ _ \ '_ \ / _ \ '_ \ / _` |/ _ \ '_ \ / __| |/ _ \/ __|
+ | |  |  __/ | | | (_| | |_| | | | | |  | |__| |  __/ |_) |  __/ | | | (_| |  __/ | | | (__| |  __/\__ \
+ |_|   \___|_| |_|\__, |\__,_|_|_| |_|  |_____/ \___| .__/ \___|_| |_|\__,_|\___|_| |_|\___|_|\___||___/
+             _______ | |      _ _    _ _      _____ | |       _        _ _ _                            
+            |__   __||_|     | | |  (_) |    |_   _||_|      | |      | | (_)                           
+               | | ___   ___ | | | ___| |_     | |  _ __  ___| |_ __ _| | |_ _ __   __ _                
+               | |/ _ \ / _ \| | |/ / | __|    | | | '_ \/ __| __/ _` | | | | '_ \ / _` |               
+               | | (_) | (_) | |   <| | |_    _| |_| | | \__ \ || (_| | | | | | | | (_| |               
+               |_|\___/ \___/|_|_|\_\_|\__|  |_____|_| |_|___/\__\__,_|_|_|_|_| |_|\__, |               
+                                                                                    __/ |               
+                                                                                   |___/                
+"
 echo "Installing Go, pipx, and security toolkit..."
 
 # Colors for output
@@ -11,15 +26,15 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 print_status() {
-    echo -e "${GREEN}[Here We Go]${NC} $1"
+    echo -e "${GREEN}[Success \U1F44D]${NC} $1"
 }
 
 print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
+    echo -e "${YELLOW}[WARNING \U1F6A8]${NC} $1"
 }
 
 print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
+    echo -e "${RED}[ERROR \U274C]${NC} $1"
 }
 
 # Detect package manager
@@ -127,7 +142,7 @@ if ! command -v go &> /dev/null; then
         print_status "Go installed via package manager: $(go version)"
     else
         # Fallback to manual installation
-        GO_VERSION="1.21.5"
+        GO_VERSION="1.24.5"
         GO_TARBALL="go${GO_VERSION}.linux-amd64.tar.gz"
         
         print_status "Downloading Go ${GO_VERSION}..."
@@ -224,4 +239,5 @@ echo "✓ pipx package manager"
 echo "✓ Security toolkit tools"
 echo "✓ All dependencies installed"
 source ~/.bashrc
+exec bash -l
 print_status "Environment updated."
