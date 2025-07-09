@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e  # Exit on any error
 
 echo "=== Dependency Installer Script ==="
@@ -88,10 +87,10 @@ print_status "Detected package manager: $PKG_MANAGER"
 # Define packages for different package managers
 declare -A PACKAGES
 PACKAGES[apt]="git make gcc python3-pip python3-venv python3-full libpcap-dev wget ruby ruby-dev ruby-rubygems golang-go pipx"
-PACKAGES[yum]="git make gcc python3-pip python3-setuptools libpcap-devel wget ruby ruby-devel rubygems golang python3-pipx"
-PACKAGES[dnf]="git make gcc python3-pip python3-setuptools libpcap-devel wget ruby ruby-devel rubygems golang python3-pipx"
+PACKAGES[yum]="git make gcc python3-pip python3-setuptools libpcap-devel wget ruby ruby-devel rubygems golang pipx"
+PACKAGES[dnf]="git make gcc python3-pip python3-setuptools libpcap-devel wget ruby ruby-devel rubygems golang pipx"
 PACKAGES[pacman]="git make gcc python-pip python-setuptools libpcap wget ruby rubygems go python-pipx"
-PACKAGES[zypper]="git make gcc python3-pip python3-setuptools libpcap-devel wget ruby ruby-devel rubygems go python3-pipx"
+PACKAGES[zypper]="git make python3 gcc python3-pip python3-setuptools libpcap-devel wget ruby ruby-devel rubygems go python3-pipx"
 PACKAGES[apk]="git make gcc python3 py3-pip libpcap-dev wget ruby ruby-dev ruby-gems go py3-pipx"
 
 # Install system packages
@@ -215,10 +214,14 @@ else
 fi
 
 print_status "Installation completed successfully!"
-print_status "Please run 'source ~/.bashrc' or restart your terminal to update PATH"
+
+
+
 
 echo -e "\n${GREEN}=== Installation Summary ===${NC}"
 echo "✓ Golang for Tools Compilation"
 echo "✓ pipx package manager"
 echo "✓ Security toolkit tools"
 echo "✓ All dependencies installed"
+source ~/.bashrc
+print_status "Environment updated."
